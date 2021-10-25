@@ -11,7 +11,6 @@ cp ~/.vimrc ~/configs
 cp ~/.alacritty.yml ~/configs
 cp ~/.tmux.conf ~/configs
 cp ~/.Xmodmap ~/configs
-cp ~/updateconf.sh ~/configs
 
 cd ~/configs
 git add .
