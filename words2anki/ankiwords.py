@@ -33,5 +33,7 @@ def invoke(action, **params):
     return response['result']
 
 for i in range(len(meanings) - 1):
+    #print("=============={}============".format(words[i]))
+    #print(meanings[i+1])
     result = invoke('addNote', note={'deckName': 'words', 'modelName': 'Basic', 'fields': {'Front': words[i], 'Back': meanings[i+1]}})
     print(result)
