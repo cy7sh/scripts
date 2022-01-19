@@ -17,7 +17,7 @@ for entry in meanings:
 def request(action, **params):
     return {'action': action, 'params': params, 'version': 6}
 
-def invoke(action, **params):
+def invoke(action, word, **params):
     requestJson = json.dumps(request(action, **params)).encode('utf-8')
     response = json.load(urllib.request.urlopen(urllib.request.Request('http://localhost:8765', requestJson)))
     if len(response) != 2:
@@ -28,12 +28,12 @@ def invoke(action, **params):
         raise Exception('response is missing required result field')
     if response['error'] is not None:
         if response['error'] == 'cannot create note because it is a duplicate':
-            return 'skip duplicate'
+            return 'skip duplicate: ' + word
         raise Exception(response['error'])
     return response['result']
 
 for i in range(len(meanings) - 1):
     #print("=============={}============".format(words[i]))
     #print(meanings[i+1])
-    result = invoke('addNote', note={'deckName': 'words', 'modelName': 'Basic', 'fields': {'Front': words[i], 'Back': meanings[i+1]}})
+    result = invoke('addNote', words[i], note={'deckName': 'words', 'modelName': 'Basic', 'fields': {'Front': words[i], 'Back': meanings[i+1]}})
     print(result)
