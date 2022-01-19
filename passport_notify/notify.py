@@ -12,8 +12,7 @@ prevRequest = requests.get("https://emrtds.nepalpassport.gov.np/iups-api/calenda
 telegram_send.send(messages=["Initial response:", prevRequest.text])
 
 while True:
-    # reqeust every 60 seconds
-    time.sleep(60)
+    time.sleep(600)
     newRequest = requests.get("https://emrtds.nepalpassport.gov.np/iups-api/calendars/11/false")
     if prevRequest.text != newRequest.text:
         telegram_send.send(messages=["CHANGE IN REQUEST", "New reqeust:", newRequest.text])
