@@ -3,6 +3,8 @@
 import json
 import urllib.request
 
+deck_name = 'words'
+
 with open('words.txt') as f:
     data = f.read()
 
@@ -33,7 +35,9 @@ def invoke(action, word, **params):
     return response['result']
 
 for i in range(len(meanings) - 1):
-    #print("=============={}============".format(words[i]))
+    # uncomment following two lines and comment last two lines to check
+    # what will be added to your deck
+    #print("=============={}============".format(words[i][:len(words[i]) - 1]))
     #print(meanings[i+1])
-    result = invoke('addNote', words[i], note={'deckName': 'words', 'modelName': 'Basic', 'fields': {'Front': words[i], 'Back': meanings[i+1]}})
+    result = invoke('addNote', words[i], note={'deckName': deck_name, 'modelName': 'Basic', 'fields': {'Front': words[i][:len(words[i]) - 1], 'Back': meanings[i+1]}})
     print(result)
