@@ -14,6 +14,8 @@ for entry in meanings:
     lines = entry.split('\n')
     if len(lines) >= 2:
         word = lines[1].split('/')[0]
+        if word[-1] == ' ':
+            word = word[:len(word) - 1]
         words.append(word)
 
 def request(action, **params):
@@ -37,7 +39,7 @@ def invoke(action, word, **params):
 for i in range(len(meanings) - 1):
     # uncomment following two lines and comment last two lines to check
     # what will be added to your deck
-    #print("=============={}============".format(words[i][:len(words[i]) - 1]))
+    #print("=============={}============".format(words[i]))
     #print(meanings[i+1])
-    result = invoke('addNote', words[i], note={'deckName': deck_name, 'modelName': 'Basic', 'fields': {'Front': words[i][:len(words[i]) - 1], 'Back': meanings[i+1]}})
+    result = invoke('addNote', words[i], note={'deckName': deck_name, 'modelName': 'Basic', 'fields': {'Front': words[i], 'Back': meanings[i+1]}})
     print(result)
