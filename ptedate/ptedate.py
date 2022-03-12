@@ -32,6 +32,9 @@ while True:
     request = session.post(burp0_url, headers=burp0_headers, cookies=burp0_cookies, data=burp0_data)
     root = ET.fromstring(request.text)
     data = findData(root)
+    if data == None:
+        telegram_send.send(messages=["SESSION EXPIRED PLEASE UPDATE! BOT SHUTTING DOWN."])
+        break
     # confirmation sake
     print(data)
 
