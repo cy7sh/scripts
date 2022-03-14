@@ -4,6 +4,7 @@ import telegram_send
 import requests
 import time
 import xml.etree.ElementTree as ET
+import datetime
 
 def findData(root):
     for child in root:
@@ -13,6 +14,8 @@ def findData(root):
         data = findData(child)
         if data != None:
             return data
+
+telegram_send.send(messages=["-------------BOT STARTED {} -------------".format(datetime.datetime.now())])
 
 session = requests.session()
 
