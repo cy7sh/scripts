@@ -25,6 +25,7 @@ burp0_headers = {"User-Agent": "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:98.0)
 burp0_data = {"geoCodeLatitude": "27.6280864", "geoCodeLongitude": "83.4748498", "threeCharCountryCode": '', "fullAddress": "Alfa Beta Complex, 1st floor, New Baneshwor, Kathmandu, Bagmati, Kathmandu, 44600, Nepal", "geoCodeTwoCharCountryCode": '', "preferredDateHidden": "06/13/2022", "resultCardID": "5", "preferredDateHidden_1": '', "preferredDateHiddenForAriaLabel_1": '', "preferredDateShown_1": "Select a date for appointment times", "preferredDateHidden_2": '', "preferredDateHiddenForAriaLabel_2": '', "preferredDateShown_2": "Select a date for appointment times", "preferredDateHidden_3": '', "preferredDateHiddenForAriaLabel_3": '', "preferredDateShown_3": "Select a date for appointment times", "preferredDateHidden_4": '', "preferredDateHiddenForAriaLabel_4": '', "preferredDateShown_4": "Select a date for appointment times", "preferredDateHidden_5": '', "preferredDateHiddenForAriaLabel_5": "06/14/2022", "preferredDateShown_5": "14 June 2022", "appt_menu_5": "1655218800000:83406", "combinedtestCenterFormId_SUBMIT": "1", "javax.faces.ViewState": "OjCXdZBT38K8eJqYf6yD6lrnlkuhyRjpx0CQKXywWJ4pEIBq", "year": "2022", "month": "5", "testCenterId": "71336", "org.richfaces.ajax.component": "j_id_43_1_1_0_1_2", "j_id_43_1_1_0_1_2": "j_id_43_1_1_0_1_2", "rfExt": "null", "AJAX:EVENTS_COUNT": "1", "javax.faces.partial.event": "undefined", "javax.faces.source": "j_id_43_1_1_0_1_2", "javax.faces.partial.ajax": "true", "javax.faces.partial.execute": "@component", "javax.faces.partial.render": "@component", "combinedtestCenterFormId": "combinedtestCenterFormId"}
 
 nextMonth = 4
+count = 0
 
 while True:
     burp0_data["month"] = str(nextMonth)
@@ -37,7 +38,8 @@ while True:
         telegram_send.send(messages=["SESSION EXPIRED PLEASE UPDATE! BOT SHUTTING DOWN."])
         break
     # confirmation sake
-    print(data)
+    print("{}: {}".format(count, data))
+    count += 1
 
     if nextMonth == 4:
         if len(data) != 58:
