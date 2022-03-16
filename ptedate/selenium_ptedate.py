@@ -10,7 +10,7 @@ driver = webdriver.Chrome()
 driver.get("https://mypte.pearsonpte.com/")
 assert "myPTE" in driver.title
 
-time.sleep(5)
+time.sleep(3)
 # login
 username_elm = driver.find_element(By.ID, "inputUsername")
 password_elm = driver.find_element(By.ID, "inputPassword")
@@ -27,7 +27,7 @@ time.sleep(15)
 
 date_bt = driver.find_element(By.ID, "preferredDateShown_1")
 date_bt.click()
-time.sleep(5)
+time.sleep(2)
 
 def wait_and_prev():
     time.sleep(3)
@@ -49,6 +49,13 @@ def check_avalability():
     if not driver.find_element(By.ID, "warning_text_1").is_displayed():
         alarm()
 
+def reload():
+    driver.refresh()
+    time.sleep(5)
+    date_bt = driver.find_element(By.ID, "preferredDateShown_1")
+    date_bt.click()
+    time.sleep(2)
+
 while True:
     try:
         wait_and_prev()
@@ -58,6 +65,7 @@ while True:
         wait_and_next()
         wait_and_next()
         wait_and_next()
+        reload()
     except Exception as e:
         print(e)
         # wait for human intervention
