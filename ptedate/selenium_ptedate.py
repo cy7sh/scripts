@@ -54,6 +54,8 @@ def check_avalability():
         alarm()
 
 def reload():
+    time.sleep(2)
+    check_avalability()
     driver.refresh()
     time.sleep(5)
     date_bt = driver.find_element(By.ID, "preferredDateShown_1")
