@@ -61,10 +61,6 @@ while True:
         wait_and_prev()
         wait_and_prev()
         wait_and_prev()
-
-        wait_and_next()
-        wait_and_next()
-        wait_and_next()
         reload()
     except Exception as e:
         print(e)
