@@ -5,6 +5,10 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
 from playsound import playsound
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 driver = webdriver.Chrome()
 driver.get("https://mypte.pearsonpte.com/")
@@ -15,9 +19,9 @@ time.sleep(3)
 username_elm = driver.find_element(By.ID, "inputUsername")
 password_elm = driver.find_element(By.ID, "inputPassword")
 username_elm.clear()
-username_elm.send_keys("shirishpokhrel1@gmail.com")
+username_elm.send_keys(os.getenv("PTE_USERNAME"))
 password_elm.clear()
-password_elm.send_keys("sn0wBall")
+password_elm.send_keys(os.getenv("PTE_PASSWORD"))
 password_elm.send_keys(Keys.RETURN)
 
 time.sleep(10)
