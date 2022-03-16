@@ -60,7 +60,6 @@ def reload():
     time.sleep(5)
     date_bt = driver.find_element(By.ID, "preferredDateShown_1")
     date_bt.click()
-    time.sleep(2)
 
 while True:
     try:
