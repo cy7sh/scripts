@@ -41,5 +41,5 @@ for i in range(len(meanings) - 1):
     # what will be added to your deck
     #print("=============={}============".format(words[i]))
     #print(meanings[i+1])
-    result = invoke('addNote', words[i], note={'deckName': deck_name, 'modelName': 'Basic', 'fields': {'Front': words[i], 'Back': meanings[i+1]}})
+    result = invoke('addNote', words[i], note={'deckName': deck_name, 'modelName': 'words', 'fields': {'Word': words[i], 'Meaning': meanings[i+1]}})
     print(result)
