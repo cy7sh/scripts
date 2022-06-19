@@ -64,8 +64,6 @@ def reload():
 while True:
     try:
         wait_and_prev()
-        wait_and_prev()
-        wait_and_prev()
         reload()
     except Exception as e:
         print(e)
