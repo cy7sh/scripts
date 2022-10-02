@@ -1,6 +1,5 @@
 #!/bin/bash
 
-mkdir ~/configs
 rm -rf ~/configs/awesome
 mkdir ~/configs/awesome
 cp -r ~/.config/awesome/* ~/configs/awesome
@@ -18,9 +17,9 @@ cd ~/configs
 git add .
 if [ -z "$1" ]
 then
-	git commit -m "update configs"
+	git commit -S -m "update configs"
 else
-	git commit -m "$1"
+	git commit -S -m "$1"
 fi
 git push
 git push sh
